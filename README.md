@@ -15,8 +15,8 @@ The HumanAPI authentication strategy authenticates users using a HumanAPI accoun
 OAuth tokens.  The strategy requires a `verify` callback, which accepts these credentials and calls `done` providing a user, as well as `options` specifying a consumer key, consumer secret, and callback URL.
 
     passport.use(new HumanApiStrategy({
-        consumerKey: HUMANAPI_CONSUMER_KEY,
-        consumerSecret: HUMANAPI_CONSUMER_SECRET,
+        consumerKey: HUMANAPI_APP_ID,
+        consumerSecret: HUMANAPI_APP_SECRET,
         callbackURL: "http://127.0.0.1:3000/auth/humanapi/callback",
       },
       function(token, tokenSecret, profile, done) {
