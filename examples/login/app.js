@@ -4,7 +4,7 @@ var express = require('express')
   // , HumanApiStrategy = require('passport-humanapi').Strategy;
   , HumanApiStrategy = require('../../lib/passport-humanapi').Strategy;
 
-var HUMANAPI_APP_ID = "--insert-humanapi-app-id-here--"
+var HUMANAPI_APP_ID = "--insert-humanapi-app-id-here--";
 var HUMANAPI_APP_SECRET = "--insert-humanapi-app-secret-here--";
 
 
@@ -32,7 +32,6 @@ passport.use(new HumanApiStrategy({
     clientID: HUMANAPI_APP_ID,
     clientSecret: HUMANAPI_APP_SECRET,
     callbackURL: "http://localhost:3000/auth/humanapi/callback",
-    scope: "heart_rate bmi bodyfat"
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
