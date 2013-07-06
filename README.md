@@ -1,7 +1,7 @@
 # Passport-HumanAPI
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
-with [HumanAPI's Personal Health Data API](https://api.humanapi.co) using the OAuth 2.0 API.
+with [HumanAPI](https://api.humanapi.co) using the OAuth 2.0 API.
 
 ## Installation
 
@@ -11,14 +11,13 @@ with [HumanAPI's Personal Health Data API](https://api.humanapi.co) using the OA
 
 #### Configure Strategy
 
-The HumanAPI Personal Health Data API authentication strategy authenticates users using a HumanAPI Personal Health Data API account and
+The HumanAPI authentication strategy authenticates users using a HumanAPI account and
 OAuth tokens.  The strategy requires a `verify` callback, which accepts these credentials and calls `done` providing a user, as well as `options` specifying a consumer key, consumer secret, and callback URL.
 
     passport.use(new HumanApiStrategy({
         consumerKey: HUMANAPI_CONSUMER_KEY,
         consumerSecret: HUMANAPI_CONSUMER_SECRET,
         callbackURL: "http://127.0.0.1:3000/auth/humanapi/callback",
-        scope: "profile "
       },
       function(token, tokenSecret, profile, done) {
         User.findOrCreate({ userId: profile.id }, function (err, user) {
@@ -38,7 +37,7 @@ application:
     app.get('/auth/humanapi',
       passport.authenticate('humanapi'),
       function(req, res){
-        // The request will be redirected to HumanAPI Personal Health Data API for authentication, so this
+        // The request will be redirected to HumanAPI for authentication, so this
         // function will not be called.
       });
 

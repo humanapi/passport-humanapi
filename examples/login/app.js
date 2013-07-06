@@ -13,7 +13,7 @@ var HUMANAPI_APP_SECRET = "--insert-humanapi-app-secret-here--";
 //   serialize users into and deserialize users out of the session.  Typically,
 //   this will be as simple as storing the user ID when serializing, and finding
 //   the user by ID when deserializing.  However, since this example does not
-//   have a database of user records, the complete HumanAPI Personal Health Data API profile is serialized
+//   have a database of user records, the complete HumanAPI profile is serialized
 //   and deserialized.
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -36,10 +36,10 @@ passport.use(new HumanApiStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      
-      // To keep the example simple, the user's HumanAPI Personal Health Data API profile is returned to
+
+      // To keep the example simple, the user's HumanAPI profile is returned to
       // represent the logged-in user.  In a typical application, you would want
-      // to associate the HumanAPI Personal Health Data API account with a user record in your database,
+      // to associate the HumanAPI account with a user record in your database,
       // and return that user instead.
       return done(null, profile);
     });
@@ -83,13 +83,13 @@ app.get('/login', function(req, res){
 
 // GET /auth/humanapi
 //   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in HumanAPI Personal Health Data API authentication will involve
-//   redirecting the user to humanapi.com.  After authorization, HumanAPI Personal Health Data API will
+//   request.  The first step in HumanAPI authentication will involve
+//   redirecting the user to humanapi.com.  After authorization, HumanAPI will
 //   redirect the user back to this application at /auth/humanapi/callback
 app.get('/auth/humanapi',
   passport.authenticate('humanapi'),
   function(req, res){
-    // The request will be redirected to HumanAPI Personal Health Data API for authentication, so this
+    // The request will be redirected to HumanAPI for authentication, so this
     // function will not be called.
   });
 
@@ -98,7 +98,7 @@ app.get('/auth/humanapi',
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/auth/humanapi/callback', 
+app.get('/auth/humanapi/callback',
   passport.authenticate('humanapi', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
