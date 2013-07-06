@@ -1,11 +1,11 @@
 {
   "name": "passport-humanapi",
-  "version": "0.1.1",
-  "description": "HumanAPI Personal Health Data API authentication strategy for Passport.",
+  "version": "0.1.0",
+  "description": "HumanAPI authentication strategy for Passport.",
   "author": "Ola Wiberg <ola@humanapi.co> (http://olawiberg.com/)",
   "repository": {
     "type": "git",
-    "url": "http://github.com/olawiberg/passport-humanapi.git"
+    "url": "http://github.com/humanapi/passport-humanapi.git"
   },
   "main": "./lib/passport-humanapi",
   "dependencies": {
